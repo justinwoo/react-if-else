@@ -1,4 +1,9 @@
 var React = require('react');
+var Else = require('./Else');
+
+function isElseComponent(component) {
+  return component.hasOwnProperty('type') && component.type.displayName === 'Else';
+}
 
 /**
  * If Component for conditionally rendering child components.
@@ -10,21 +15,22 @@ var If = React.createClass({
     var output;
     if (Array.isArray(this.props.children)) {
       output = this.props.children.reduce(function (agg, inp) {
-        // render children before else if condition is true
-        // otherwise, the opposite should happen
-        if (cond && !agg.elseFound) {
-          agg.children.push(inp);
-        } else if (!cond && agg.elseFound) {
-          agg.children.push(inp);
-        }
         // if we find <Else/> handle it appropriately
-        if (inp.hasOwnProperty('type') && inp.type.displayName === 'Else') {
+        if (isElseComponent(inp)) {
           // only set the classname if this is false
           if (!cond) {
             agg.className = inp.props.className;
           }
           // mark that we have reached else
           agg.elseFound = true;
+        } else {
+          // render children before else if condition is true
+          // otherwise, the opposite should happen
+          if (cond && !agg.elseFound) {
+            agg.children.push(inp);
+          } else if (!cond && agg.elseFound) {
+            agg.children.push(inp);
+          }
         }
         return agg;
       }, {
