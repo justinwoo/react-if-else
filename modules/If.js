@@ -2,7 +2,7 @@ var React = require('react');
 var Else = require('./Else');
 
 function isElseComponent(component) {
-  return component.hasOwnProperty('type') && component.type.displayName === 'Else';
+  return component.type === Else.type;
 }
 
 /**

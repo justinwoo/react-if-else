@@ -31,4 +31,4 @@ var YourComponent = React.createClass({
 
 ## Demo
 
-JSFiddle: http://jsfiddle.net/o3t1u5v5/
+JSFiddle: http://jsfiddle.net/tkpx7L6a/
