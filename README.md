@@ -1,4 +1,4 @@
-# React If/Else
+# React If/Else [![Build Status](https://travis-ci.org/kimagure/react-if-else.svg?branch=master)](https://travis-ci.org/kimagure/react-if-else)
 
 Render blocks of components using a conditional, and supply <Else/> to
 display other blocks.
