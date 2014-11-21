@@ -1,7 +1,9 @@
 # React If/Else [![Build Status](https://travis-ci.org/kimagure/react-if-else.svg?branch=master)](https://travis-ci.org/kimagure/react-if-else)
 
 Render blocks of components using a conditional, and supply <Else/> to
-display other blocks.
+display other blocks. Also supports using <ElseIf/> conditions to
+display blocks (you may consider using [React-Cond](https://github.com/kimagure/react-cond) instead for this case).
+
 
 ## Usage
 
@@ -11,6 +13,7 @@ Use CommonJS:
 
 ```js
 var If = require('react-if-else').If;
+var ElseIf = require('react-if-else').ElseIf;
 var Else = require('react-if-else').Else;
 
 var YourComponent = React.createClass({
@@ -19,6 +22,9 @@ var YourComponent = React.createClass({
       <If cond={true} className="my-conditions">
         If true~~~
         <h2>彼女さん募集中</h2>
+      <ElseIf cond={false} className="my-conditions-else-if"/>
+        ElseIf true~~~
+        <h4>逢いたくなったらまぶたを閉じる</h4>
       <Else className="my-conditions-else"/>
         If false~~~
         <h3>出会いの数だけで別れは増える</h3>
