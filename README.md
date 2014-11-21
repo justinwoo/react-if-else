@@ -1,5 +1,7 @@
 # React If/Else [![Build Status](https://travis-ci.org/kimagure/react-if-else.svg?branch=master)](https://travis-ci.org/kimagure/react-if-else)
 
+[npmjs page](https://www.npmjs.org/package/react-if-else)
+
 Render blocks of components using a conditional, and supply <Else/> to
 display other blocks. Also supports using <ElseIf/> conditions to
 display blocks (you may consider using [React-Cond](https://github.com/kimagure/react-cond) instead for this case).
