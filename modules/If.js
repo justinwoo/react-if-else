@@ -3,11 +3,11 @@ var Else = require('./Else');
 var ElseIf = require('./ElseIf');
 
 function isElseComponent(component) {
-  return component.type === Else.type;
+  return (component.type === Else.type || component.type === Else);
 }
 
 function isElseIfComponent(component) {
-  return component.type === ElseIf.type;
+  return (component.type === ElseIf.type || component.type === ElseIf);
 }
 
 /**
