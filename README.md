@@ -1,4 +1,4 @@
-# React If/Else [![Build Status](https://travis-ci.org/kimagure/react-if-else.svg?branch=master)](https://travis-ci.org/kimagure/react-if-else)
+# React If/Else [![Build Status](https://travis-ci.org/justinwoo/react-if-else.svg?branch=master)](https://travis-ci.org/justinwoo/react-if-else)
 
 [npmjs page](https://www.npmjs.org/package/react-if-else)
 
