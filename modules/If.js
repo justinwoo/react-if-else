@@ -58,11 +58,8 @@ var If = React.createClass({
     } else {
       output = this.props.children;
     }
-    return (
-      <div className={output.className}>
-        {output.children}
-      </div>
-    );
+    var args = ["div", {className: output.className}].concat(output.children);
+    return React.createElement.apply(this, args);
   }
 });
 
