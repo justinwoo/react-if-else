@@ -14,12 +14,11 @@ function parseVersion() {
     return [0, 0];
 }
 
-function isElseComponent(component) {
-  return (component.type === Else.type || component.type === Else);
-}
+var versions = parseVersion();
 
-function isElseIfComponent(component) {
-  return (component.type === ElseIf.type || component.type === ElseIf);
+function isElementOfType(inst, cstr) {
+    // from React 0.13.0, suggest to distinguish by the constructor directly, #5 
+    return inst.type === (versions[0] == 0 && versions[1] < 13 ? cstr.type : cstr);
 }
 
 /**
@@ -31,7 +30,7 @@ var If = React.createClass({
     var output;
     if (Array.isArray(this.props.children)) {
       output = this.props.children.reduce(function (agg, inp) {
-        if (isElseComponent(inp)) {
+        if (isElementOfType(inp, Else)) {
           // if we find <Else/> handle it appropriately
           // only set the classname if this is false
           if (!agg.cond && !agg.precedingElseIfBlock) {
@@ -39,7 +38,7 @@ var If = React.createClass({
           }
           // mark that we have reached else
           agg.elseFound = true;
-        } else if (isElseIfComponent(inp)) {
+        } else if (isElementOfType(inp, ElseIf)) {
           // if we find <ElseIf/> handle it after inspecting
           // its condition
           if (!agg.cond && inp.props.cond) {
@@ -72,7 +71,7 @@ var If = React.createClass({
     }
 
     // for React <15.0.0, keep child text node is wrapped by `span`, #4
-    if (parseVersion()[0] < 15 && output.children && output.children.length === 1) {
+    if (versions[0] < 15 && output.children && output.children.length === 1) {
         var childType = typeof output.children[0];
         if (childType === 'number' || childType === 'string') {
             // with this extra invalid child, `props.children` is still an array
