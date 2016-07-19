@@ -72,9 +72,11 @@ var If = React.createClass({
     }
 
     // for React <15.0.0, keep child text node is wrapped by `span`, #4
-    if (parseVersion()[0] < 15 && output.children && output.children.length === 1
-            && typeof output.children[0] === 'string') {
-        output.children[0] = React.createElement('span', null, output.children[0]);
+    if (parseVersion()[0] < 15 && output.children && output.children.length === 1) {
+        var childType = typeof output.children[0];
+        if (childType === 'number' || childType === 'string') {
+            output.children[0] = React.createElement('span', null, output.children[0]);
+        }
     }
 
     var args = ["div", {className: output.className}].concat(output.children);
