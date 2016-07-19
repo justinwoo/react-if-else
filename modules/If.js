@@ -75,7 +75,9 @@ var If = React.createClass({
     if (parseVersion()[0] < 15 && output.children && output.children.length === 1) {
         var childType = typeof output.children[0];
         if (childType === 'number' || childType === 'string') {
-            output.children[0] = React.createElement('span', null, output.children[0]);
+            // with this extra invalid child, `props.children` is still an array
+            // or the only child will be treated as content directly
+            output.children.push(null);
         }
     }
 
