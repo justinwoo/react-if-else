@@ -1,6 +1,7 @@
-# React If/Else [![Build Status](https://travis-ci.org/justinwoo/react-if-else.svg?branch=master)](https://travis-ci.org/justinwoo/react-if-else)
+# React If/Else
 
-[npmjs page](https://www.npmjs.org/package/react-if-else)
+[![build status](https://img.shields.io/travis/justinwoo/react-if-else/master.svg?style=flat-square)](https://travis-ci.org/justinwoo/react-if-else)
+[![npm version](https://img.shields.io/npm/v/react-if-else.svg?style=flat-square)](https://www.npmjs.com/package/react-if-else)
 
 Render blocks of components using a conditional, and supply <Else/> to
 display other blocks. Also supports using <ElseIf/> conditions to
